@@ -28,7 +28,23 @@ bash one-key-ikev2.sh
 ```
 
 3.等待自动配置部分内容后，选择vps类型（OpenVZ还是Xen、KVM），**选错将无法成功连接，请务必核实服务器的类型**。输入服务器ip或者绑定的域名(连接vpn时服务器地址将需要与此保持一致)，以及证书的相关信息(C,O,CN)，为空将使用默认值(default value)，确认无误后按任意键继续
-
+      (1、使用virt-what
+      
+      >apt-get install virt-what
+      或者
+      >yum install virt-what
+      >virt-what
+      
+      就会显示结果。
+      
+      2、ls /proc/命令，一般Xen的VPS，/proc目录下面会有xen的目录，openvz的会有vz目录。
+      
+      3、free -m命令看内存，openvz的没有swap，当然也有xen的没有swap，但是xen的是可以加的，openvz不行。
+      
+      4、uname -a命令，有些xen的VPS里面会显示有xen。
+      
+      5、ifconfig命令查看网卡，openvz的一般都是venet0 ，xen的一般都是eth*。
+     )
 4.输入两次pkcs12证书的密码(可以为空)
 
 5.看到install success字样即表示安装成功。默认用户名密码将以黄字显示，可根据提示自行修改文件中的用户名密码。
